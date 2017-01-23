@@ -1,0 +1,12 @@
+Package: DATA5000
+Type: Package
+Title: Project for DATA 5000 Winter 2017
+Version: 0.1.0
+Author: Yaser Alwattar and Scott McNeil
+Maintainer: Scott McNeil <scott.mcneil@carleton.ca>
+Description: This is our project analyzing start-up acquistioins for the winter 2017 DATA 5000 course at Carleton University
+License: What license is it under?
+LazyData: TRUE
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
