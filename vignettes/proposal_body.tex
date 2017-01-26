@@ -1,0 +1,34 @@
+\section{Introduction}
+
+When a venture capital firms invests in a start-up, any returns on that investment will almost always come in one of two ways: the start-up will make a public offering or will be purchased by another company. Public offerings, however, are rare and so the typical end goal for most start-ups is acquisition. Before they reach this stage, though, start-ups typically go through some kind of life cycle. Most will take on more than one round of funding and spend several years building their products and customer base, with some failing in the process. This time period varies considerably among companies and especially among industries. It would be useful, then, to have a model that could reasonably predict the time until a company is expected to be acquired.
+
+The aim of this project is to develop a hazard model for doing just that, specifically relying on ensemble learning methods. The project will build on three areas of previous research. First, several papers have presented learning models for predicting M\&A activity for start-ups, including Xiang, et. al. (2012) \cite{xiang2012supervised} and Yan, et. al. (2016) \cite{yan2016modeling}. Second, several examples in previous literature have used hazard models to predict when a company will fail or when a company will make a public offering, including Huynh and Voia (2017) \cite{voia2017hazard} and Giot and Schwienbacherb (2007) \cite{giot2007ipos}. Third, this project will rely on previously developed ensemble methods for hazard models, such as Chen, et. al. (2013) \cite{chen2013gradient} and Ishwaran, et. al. (2008) \cite{ishwaran2008randomforest}.
+
+\section{Objectives}
+
+The primary objective for this project is to develop a model to reliably predict how long until a given start-up is likely to be acquired. In pursuit of this objective, we feel we can answer several key research questions, including:
+
+\begin{itemize}
+	\item
+		How reliably can a hazard model predict when a start-up will be acquired?
+	\item
+		What features of a company and its respective market best predict when it will be acquired?
+	\item
+		Which learning methods best predict when a start-up will be acquired?
+\end{itemize}
+
+\section{Motivation}
+
+The model presented in this project can contribute to a better understanding of the life cycle of start-ups. This has potential applications in both finance and public policy. For finance, it could augment models currently used by venture capital firms for making investment decisions. For public policy, it could allow governments to better target financing and assistance programs for start-ups.
+
+This is especially true for a hazard model, which attempts to model not just whether a company will be acquired, but also how long before such an event is likely to take place. This makes the model applicable at all stages of a start-up's development.
+
+\section{Methodology}
+
+Previous research predicting start-up M\&A activity has typically approached the problem as one of classification \cite{xiang2012supervised}. However, we believe the problem is particularly well suited to a hazard model for three reasons. First, data for start-up acquisitions has an inherent time dimension. Yan, et. al. (2016) \cite{yan2016modeling} propose using a point process to capture the time element, but we feel a hazard model will do this equally well. This is bolstered by the fact that similar models have been used for both company failures and public offerings \cite{voia2017hazard, giot2007ipos}. Second, data about acquisitions is, by its nature, right-censored. That is, there will always be an unobserved set of companies in the sample that will be acquired in the future. This is a problem hazard models are specifically designed to handle. Finally, hazard models typically model failures, such as patient death or equipment failure. While acquisitions are viewed (by most) as a success, the important aspect as far as the model is concerned is that we are interested in the time until an event occurs.
+
+For this paper we will test a number of ensemble prediction methods for discrete hazard models. This includes random survival forests and gradient boosting-based survival analysis. The predicted variable in this case will be whether a company is acquired in a given year. Time will be modelled discretely, with each period being a single year. The model will also use a number of other company features, including but not limited to age, total capital raised, number of funding rounds, total number of investors, number of employees and industry classification. The model will also incorporate features of the the company's key individuals---such as their experience with other start-ups---and features of the market---such as the number of competitors recently acquired.
+
+\section{Data Sources}
+
+This project will rely on data from CrunchBase, a database of start-up companies collected and distributed by the publication TechCrunch. A snapshot of this database from 2013 is publicly available while students and academic researchers can apply for access to the most recent version. We will also explore augmenting our model with a dataset of TechCrunch articles.

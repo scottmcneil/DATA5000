@@ -1,0 +1,41 @@
+\documentclass[sigconf]{acmart}
+
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\acmPrice{}
+\acmDOI{NONE}
+\acmISBN{ISBN: NONE}
+\acmConference{DATA 5000}{Winter 2017}{Carleton University}
+\copyrightyear{Winter 2017}
+\acmYear{2017}
+
+\raggedbottom
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\title{DATA 5000 Winter 2017 Project: A Hazard Model for Start-up Acquisitions}
+\subtitle{Project Proposal}
+
+\author{Yaser Alwattar}
+\affiliation{%
+  \institution{Carleton University Department of Computer Science}
+}
+\email{yaseralwattar@cmail.carleton.ca}
+
+\author{Scott McNeil}
+\affiliation{%
+  \institution{Carleton University Department of Economics}
+}
+\email{scottmcneil@cmail.carleton.ca}
+
+\title{DATA 5000 Winter 2017 Project: A Hazard Model for Start-up Acquisitions}
+
+\maketitle
+
+\input{proposal_body}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
