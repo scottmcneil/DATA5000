@@ -3,3 +3,10 @@
 .RData
 .Ruserdata
 inst/doc
+*.log
+*.pdf
+*.gz
+
+vignettes/project_proposal-concordance.tex
+vignettes/project_proposal.tex
+vignettes/project_proposal.bbl
