@@ -10,7 +10,9 @@ spacing<- content_transformer(function(x, pattern) {
 
 content_corpus2<-tm_map(content_corpus1,spacing,"[^0-9A-Za-z]")
 content_corpus2 <-tm_map(content_corpus2,content_transformer(tolower))
-new_stopwords <- c("can", "say","one","way","use","and","this","go","re","ve",
+mod_content_text1<-tm_map(content_corpus2,stemDocument)
+
+new_stopwords <- c("can", "say","one","way","use","and","this","go","re","ve","say",
                    "they","around","that","with","you","actual",
                    "let","for","just","percent","the","there",
                    "also","howev","tell","will",
@@ -27,7 +29,7 @@ new_stopwords <- c("can", "say","one","way","use","and","this","go","re","ve",
                    "enough","far","earli","away","achiev","draw",
                    "last","never","brief","bit","entir","brief",
                    "great","lot","aaa","aaaaaaaaaa")
-mod_content_text1 <- tm_map(content_corpus3, removeWords, new_stopwords)
+mod_content_text1 <- tm_map(mod_content_text1, removeWords, new_stopwords)
 mod_content_text1<-tm_map(mod_content_text1,content_transformer(gsub),pattern="advertis",replacement="ad")
 mod_content_text1<-tm_map(mod_content_text1,content_transformer(gsub),pattern="websit",replacement="web")
 mod_content_text1<-tm_map(mod_content_text1,content_transformer(gsub),pattern="site",replacement="web")
@@ -36,7 +38,6 @@ mod_content_text1<-tm_map(mod_content_text1,content_transformer(gsub),pattern="r
 
 
 mod_content_text1 <- tm_map(mod_content_text1, removeWords, stopwords("english"))
-mod_content_text1<-tm_map(mod_content_text1,stemDocument)
 mod_content_text1<-tm_map(mod_content_text1,removeNumbers)
 mod_content_text1<-tm_map(mod_content_text1,removePunctuation)
 mod_content_text1<-tm_map(mod_content_text1,stripWhitespace)
@@ -52,7 +53,6 @@ write.csv(content_term_freq,"content_term_freq.csv")
 #Remove zero entry documents
 content_term_matrix2<-content_term_matrix1[total_words_inDoc>0,]
 #content_term_freq<-slam::col_sums(content_term_matrix1,na.rm=T)
-write.csv(content_term_freq,"doc_term_freq.csv")
 LDA_modeling <-LDA(content_term_matrix2,5)
 LDA_modeling_head_terms<-as.matrix(terms(LDA_modeling,10))
 
